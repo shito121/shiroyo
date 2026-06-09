@@ -1,0 +1,11 @@
+[
+  {
+    "id": "developer-0001",
+    "username": "developer",
+    "email": "developer@shirokazuki.local",
+    "passwordHash": "a78f8128f2109434daf14d867c665d97a242909409b29bc0a965111d8a4a9f80",
+    "authToken": null,
+    "resetToken": null,
+    "resetTokenExpiry": null
+  }
+]

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Numerical Methods — Kalkulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>Metode Numerik — Kalkulator</h1>
+      <div class="group-title">Kelompok 1</div>
+      <p>Eliminasi Gauss, Gauss-Seidel, Bagi Dua, Secant, Interpolasi Newton, Trapesium, Runge-Kutta</p>
+    </div>
+    <div class="header-actions">
+      <button id="theme-toggle">Toggle Theme</button>
+      <button id="group-menu" class="menu-btn" aria-label="Group menu">⋮</button>
+      <div id="group-dropdown" class="menu-dropdown hidden" role="menu" aria-hidden="true">
+        <strong>Kelompok 1 — Anggota</strong>
+        <ol>
+          <li>Yova Azriel Dwi Pramono (202443501254)</li>
+          <li>Rafael Junianto (202443501247)</li>
+          <li>Adrian Fairus Azzam (202443501276)</li>
+          <li>Andhika Darmanda Putra (202443501298)</li>
+          <li>Azka Taufiqur Rachman (202443501265)</li>
+          <li>Eksa Supriyadi (202443501243)</li>
+          <li>Ahmad Aldi Al Azani (202443501291)</li>
+          <li>Muhammd Farhan Bukhori (202443501253)</li>
+          <li>Faidz Hasan Amala (202443501264)</li>
+          <li>Didi Ripaldi (202443501371)</li>
+          <li>Indah Nur Cahyani (202443501297)</li>
+          <li>Muhamad Agung Dermawan</li>
+          <li>Muhammad Aji Shaputra (202443501292)</li>
+          <li>Filomena Nyora Weking (202443501244)</li>
+        </ol>
+        <div class="menu-actions">
+          <button id="copy-npm">Salin NPM</button>
+          <button id="print-list">Cetak</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav>
+      <button data-target="gauss">Eliminasi Gauss</button>
+      <button data-target="gauss-seidel">Gauss-Seidel</button>
+      <button data-target="bisection">Metode Bagi Dua</button>
+      <button data-target="secant">Metode Secant</button>
+      <button data-target="newton">Interpolasi Newton</button>
+      <button data-target="trapezoid">Integrasi (Trapesium)</button>
+      <button data-target="rk4">Runge-Kutta 4</button>
+    </nav>
+
+    <section id="content">
+      <section id="gauss" class="panel">
+        <h2>Eliminasi Gauss</h2>
+        <label>Masukkan matriks augmented (baris per baris, koma antar elemen):</label>
+        <div class="formula-block">
+          <textarea id="gauss-matrix" placeholder="contoh:\n2,1,-1,8\n-3,-1,2,-11\n-2,1,2,-3"></textarea>
+          <button id="gauss-run">Hitung</button>
+          <button id="gauss-example" class="example">Contoh</button>
+          <pre id="gauss-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="gauss-sample"></select>
+          <button id="gauss-sample-run">Lihat Contoh</button>
+          <pre id="gauss-sample-out"></pre>
+        </div>
+      </section>
+
+      <section id="gauss-seidel" class="panel hidden">
+        <h2>Gauss-Seidel</h2>
+        <label>Masukkan matriks A (baris per baris):</label>
+        <textarea id="gs-A" placeholder="contoh:\n4,1,2\n3,5,1\n1,1,3"></textarea>
+        <label>Masukkan vektor b (pisah koma):</label>
+        <input id="gs-b" placeholder="contoh:4,7,3">
+        <label>x0 (start, pisah koma):</label>
+        <input id="gs-x0" placeholder="0,0,0">
+        <label>Toleransi:</label>
+        <input id="gs-tol" value="1e-6">
+        <div class="formula-block">
+          <button id="gs-run">Hitung</button>
+          <button id="gs-example" class="example">Contoh</button>
+          <pre id="gs-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="gs-sample"></select>
+          <button id="gs-sample-run">Lihat Contoh</button>
+          <pre id="gs-sample-out"></pre>
+        </div>
+      </section>
+
+      <section id="bisection" class="panel hidden">
+        <h2>Metode Bagi Dua</h2>
+        <label>Fungsi f(x):</label>
+        <input id="bis-f" placeholder="x*x-2">
+        <label>Interval a,b:</label>
+        <input id="bis-a" placeholder="1"> <input id="bis-b" placeholder="2">
+        <label>Toleransi:</label>
+        <input id="bis-tol" value="1e-6">
+        <div class="formula-block">
+          <button id="bis-run">Hitung</button>
+          <button id="bis-example" class="example">Contoh</button>
+          <pre id="bis-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="bis-sample"></select>
+          <button id="bis-sample-run">Lihat Contoh</button>
+          <pre id="bis-sample-out"></pre>
+        </div>
+      </section>
+
+      <section id="secant" class="panel hidden">
+        <h2>Metode Secant</h2>
+        <label>Fungsi f(x):</label>
+        <input id="sec-f" placeholder="cos(x)-x">
+        <label>x0, x1:</label>
+        <input id="sec-x0" placeholder="0"> <input id="sec-x1" placeholder="1">
+        <label>Toleransi:</label>
+        <input id="sec-tol" value="1e-6">
+        <div class="formula-block">
+          <button id="sec-run">Hitung</button>
+          <button id="sec-example" class="example">Contoh</button>
+          <pre id="sec-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="sec-sample"></select>
+          <button id="sec-sample-run">Lihat Contoh</button>
+          <pre id="sec-sample-out"></pre>
+        </div>
+      </section>
+
+      <section id="newton" class="panel hidden">
+        <h2>Interpolasi Beda Terbagi Newton</h2>
+        <label>Input x (pisah koma):</label>
+        <input id="new-xs" placeholder="0,1,2">
+        <label>Input y (pisah koma):</label>
+        <input id="new-ys" placeholder="1,3,7">
+        <label>Nilai x untuk diinterpolasi:</label>
+        <input id="new-x" placeholder="1.5">
+        <div class="formula-block">
+          <button id="new-run">Hitung</button>
+          <button id="new-example" class="example">Contoh</button>
+          <pre id="new-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="new-sample"></select>
+          <button id="new-sample-run">Lihat Contoh</button>
+          <pre id="new-sample-out"></pre>
+        </div>
+      </section>
+
+      <section id="trapezoid" class="panel hidden">
+        <h2>Integrasi Numerik — Trapesium</h2>
+        <label>f(x):</label>
+        <input id="trap-f" placeholder="sin(x)">
+        <label>a, b, n:</label>
+        <input id="trap-a" placeholder="0"> <input id="trap-b" placeholder="3.1415"> <input id="trap-n" placeholder="100">
+        <div class="formula-block">
+          <button id="trap-run">Hitung</button>
+          <button id="trap-example" class="example">Contoh</button>
+          <pre id="trap-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="trap-sample"></select>
+          <button id="trap-sample-run">Lihat Contoh</button>
+          <pre id="trap-sample-out"></pre>
+        </div>
+      </section>
+
+      <section id="rk4" class="panel hidden">
+        <h2>Runge-Kutta 4 (ODE)</h2>
+        <label>dy/dx = f(x,y):</label>
+        <input id="rk-f" placeholder="x + y">
+        <label>x0, y0, h, steps:</label>
+        <input id="rk-x0" placeholder="0"> <input id="rk-y0" placeholder="1"> <input id="rk-h" placeholder="0.1"> <input id="rk-steps" placeholder="10">
+        <div class="formula-block">
+          <button id="rk-run">Hitung</button>
+          <button id="rk-example" class="example">Contoh</button>
+          <pre id="rk-out"></pre>
+        </div>
+        <div class="sample-block">
+          <label>Contoh lainnya:</label>
+          <select id="rk-sample"></select>
+          <button id="rk-sample-run">Lihat Contoh</button>
+          <pre id="rk-sample-out"></pre>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <script src="src/methods.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

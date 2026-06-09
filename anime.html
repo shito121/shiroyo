@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shirokazuki Anime — Daftar Ongoing Anime</title>
+  <link rel="stylesheet" href="anime.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a class="logo" href="anime.html">Shirokazuki Anime</a>
+      <p>Daftar anime ongoing paling update dengan status episode dan sinopsis singkat.</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigasi situs">
+      <a class="active" href="anime.html">Ongoing</a>
+      <a href="index.html">Numerical App</a>
+    </nav>
+    <div class="account-actions">
+      <span id="account-name" class="account-name hidden"></span>
+      <button id="logout-btn" class="logout-btn hidden" type="button">Logout</button>
+    </div>
+  </header>
+
+  <div id="login-modal" class="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <div class="login-panel">
+      <div class="modal-tabs" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="login-section">Login</button>
+        <button type="button" class="tab-btn" data-tab="register-section">Register</button>
+        <button type="button" class="tab-btn" data-tab="reset-section">Reset</button>
+      </div>
+
+      <section class="tab-content active" id="login-section">
+        <h2 id="login-title">Masuk ke Shirokazuki Anime</h2>
+        <form id="login-form">
+          <label for="login-user">Username</label>
+          <input id="login-user" name="username" type="text" autocomplete="username" placeholder="Masukkan username" />
+          <label for="login-pass">Password</label>
+          <input id="login-pass" name="password" type="password" autocomplete="current-password" placeholder="Masukkan password" />
+          <button type="submit">Masuk</button>
+          <p class="login-hint">Akun demo: <strong>shiro</strong> / <strong>kazuki123</strong></p>
+          <p><button type="button" class="link-btn" data-tab="register-section">Belum punya akun? Daftar</button></p>
+        </form>
+        <p id="login-error" class="login-error" aria-live="polite"></p>
+      </section>
+
+      <section class="tab-content" id="register-section">
+        <h2>Daftar Akun Baru</h2>
+        <form id="register-form">
+          <label for="register-user">Username</label>
+          <input id="register-user" name="username" type="text" autocomplete="username" placeholder="Username baru" />
+          <label for="register-email">Email</label>
+          <input id="register-email" name="email" type="email" autocomplete="email" placeholder="example@mail.com" />
+          <label for="register-pass">Password</label>
+          <input id="register-pass" name="password" type="password" autocomplete="new-password" placeholder="Password baru" />
+          <button type="submit">Daftar</button>
+        </form>
+        <p id="register-error" class="login-error" aria-live="polite"></p>
+      </section>
+
+      <section class="tab-content" id="reset-section">
+        <h2>Reset Password</h2>
+        <form id="forgot-form">
+          <label for="forgot-email">Email</label>
+          <input id="forgot-email" name="email" type="email" autocomplete="email" placeholder="Email terdaftar" />
+          <button type="submit">Kirim Instruksi</button>
+        </form>
+        <form id="reset-form" class="hidden">
+          <label for="reset-token">Token Reset</label>
+          <input id="reset-token" name="token" type="text" placeholder="Masukkan token dari email" />
+          <label for="reset-pass">Password Baru</label>
+          <input id="reset-pass" name="password" type="password" autocomplete="new-password" placeholder="Password baru" />
+          <button type="submit">Reset Password</button>
+        </form>
+        <p id="reset-message" class="login-error" aria-live="polite"></p>
+      </section>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">UPDATE HARIAN</span>
+        <h1>Rilis Anime Ongoing</h1>
+        <p>Temukan jadwal episode terbaru, studio produksi, dan genre dalam satu halaman ringkas.</p>
+      </div>
+      <div class="hero-panel">
+        <form id="search-form" class="search-form" role="search">
+          <label for="search-input">Cari anime</label>
+          <input id="search-input" type="search" placeholder="Masukkan judul, genre, atau studio" autocomplete="off" />
+        </form>
+        <div class="filter-row" role="toolbar" aria-label="Filter genre">
+          <button type="button" data-filter="all" class="active">Semua</button>
+          <button type="button" data-filter="Action">Action</button>
+          <button type="button" data-filter="Isekai">Isekai</button>
+          <button type="button" data-filter="Shounen">Shounen</button>
+          <button type="button" data-filter="Romance">Romance</button>
+          <button type="button" data-filter="Fantasy">Fantasy</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-row" aria-label="Ringkasan update anime">
+      <div>
+        <strong id="anime-count">0</strong>
+        <span>Anime Ongoing</span>
+      </div>
+      <div>
+        <strong id="genre-count">0</strong>
+        <span>Genre tersedia</span>
+      </div>
+      <div>
+        <strong id="updated-count">0</strong>
+        <span>Terbaru hari ini</span>
+      </div>
+    </section>
+
+    <section class="cards-grid" id="anime-grid" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <p>Desain sederhana mirip halaman daftar anime ongoing. Klik judul untuk detail episode, atau buka file <code>anime.html</code>.</p>
+  </footer>
+
+  <script src="src/anime.js"></script>
+</body>
+</html>
