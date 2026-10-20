@@ -1,0 +1,151 @@
+s<!DOCTYPE html>
+<html>
+<head>
+    <title>Layout</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: white;
+        }
+
+        table {
+            width: 450px;
+            height: 500px;
+            margin: 0 auto;
+            border: 2px solid #555;
+            border-spacing: 5px;
+        }
+
+        table:nth-of-type(3n + 1) {
+            --color-primary: #6666cc;
+            --color-accent: #e27b6b;
+            --color-secondary: #996699;
+        }
+
+        table:nth-of-type(3n + 2) {
+            --color-primary: #4b9b8a;
+            --color-accent: #e6aa4b;
+            --color-secondary: #6d82b8;
+        }
+
+        table:nth-of-type(3n) {
+            --color-primary: #cc6688;
+            --color-accent: #76a85b;
+            --color-secondary: #d18a52;
+        }
+
+        td {
+            border: 2px solid #777;
+            border-radius: 15px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: Arial;
+        }
+
+        .hover-color {
+            background: white;
+            transition: background-color 0.2s;
+        }
+
+        .hover-red:hover {
+            background: #e74c3c;
+        }
+
+        .hover-green:hover {
+            background: #2ecc71;
+        }
+
+        .hover-salmon:hover {
+            background: #e27b6b;
+        }
+
+        .hover-yellow:hover {
+            background: #f1c40f;
+        }
+
+        .hover-gray:hover {
+            background: #95a5a6;
+        }
+
+        .hover-brown:hover {
+            background: #8e5a2b;
+        }
+
+        .hover-orange:hover {
+            background: #e67e22;
+        }
+
+        td:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px gray;
+        }
+
+        tr:nth-child(1) td:nth-child(1) {
+            width: 55%;
+            height: 70px;
+        }
+
+        tr:nth-child(1) td:nth-child(2) {
+            width: 12%;
+            background: var(--color-primary);
+        }
+
+        tr:nth-child(1) td:nth-child(3) {
+            width: 18%;
+        }
+
+        tr:nth-child(2) td:nth-child(1) {
+            width: 55%;
+            height: 190px;
+            background: var(--color-accent);
+        }
+
+        tr:nth-child(2) td:nth-child(2) {
+            background: var(--color-secondary);
+        }
+
+        tr:nth-child(3) td:nth-child(1) {
+            height: 70px;
+        }
+
+        tr:nth-child(4) td {
+            height: 60px;
+        }
+
+        img {
+            width: 180px;
+            height: 130px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <td class="hover-color hover-red">1</td>
+        <td></td>
+        <td class="hover-color hover-green">2</td>
+    </tr>
+
+    <tr>
+        <td><img src="panda.jpeg"></td>
+        <td></td>
+        <td class="hover-color hover-salmon">6</td>
+    </tr>
+
+    <tr>
+        <td class="hover-color hover-yellow" colspan="2">7</td>
+        <td class="hover-color hover-gray">8</td>
+    </tr>
+
+    <tr>
+        <td class="hover-color hover-brown" colspan="2">9</td>
+        <td class="hover-color hover-orange">10</td>
+    </tr>
+</table>
+
+</body>
+</html>

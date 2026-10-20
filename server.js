@@ -132,6 +132,17 @@ app.get('/api/profile', authGuard, (req, res) => {
   res.json({ username, email });
 });
 
+app.post('/api/logout', authGuard, async (req, res) => {
+  const token = getAuthToken(req);
+  const users = await readUsers();
+  const user = users.find(entry => entry.authToken === token);
+  if (user) {
+    user.authToken = null;
+    await saveUsers(users);
+  }
+  res.json({ message: 'Logout berhasil.' });
+});
+
 app.post('/api/forgot-password', async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ error: 'Email diperlukan.' });

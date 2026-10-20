@@ -175,7 +175,7 @@ h1, h2, h3 {
 
 .navbar a:hover,
 .navbar a:focus-visible {
-  color: #fff;
+  color: #53d8c0;
   text-shadow: 0 0 10px rgba(0, 190, 160, 0.65);
 }
 
@@ -320,8 +320,13 @@ main {
 }
 
 .skill-list li:hover {
-  border-color: #555;
+  border-color: #53d8c0;
+  box-shadow: 0 0 18px rgba(83, 216, 192, 0.12);
   transform: translateY(-2px);
+}
+
+.skill-list li:hover h3 {
+  color: #53d8c0;
 }
 
 .skill-mark {
@@ -580,7 +585,7 @@ main {
 
 .light-theme .navbar a:hover,
 .light-theme .navbar a:focus-visible {
-  color: #12231f;
+  color: #087a67;
 }
 
 .light-theme .theme-toggle {
@@ -617,7 +622,12 @@ main {
 }
 
 .light-theme .skill-list li:hover {
-  border-color: #a8b9b4;
+  border-color: #087a67;
+  box-shadow: 0 0 18px rgba(8, 122, 103, 0.12);
+}
+
+.light-theme .skill-list li:hover h3 {
+  color: #087a67;
 }
 
 .light-theme .skill-list h3 {

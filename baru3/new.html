@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rafael | Portfolio</title>
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --bg-soft: #131821;
+        --panel: #171d2a;
+        --panel-2: #1d2433;
+        --text: #f4f6fb;
+        --muted: #a2adbf;
+        --primary: #ff5a5f;
+        --primary-2: #ff7b7d;
+        --line: rgba(255,255,255,0.08);
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(255, 90, 95, 0.12), transparent 25%),
+          linear-gradient(180deg, #0b0d12 0%, #0d1017 100%);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(11, 13, 18, 0.72);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        gap: 24px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--text);
+      }
+
+      .brand span {
+        color: var(--primary);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .site-nav a,
+      .site-nav button {
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav button:hover {
+        color: var(--text);
+      }
+
+      .nav-contact {
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        padding: 90px 0 70px;
+        gap: 40px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: var(--primary);
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3.2rem, 7vw, 7rem);
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+      }
+
+      .accent {
+        color: var(--primary);
+      }
+
+      .hero-role {
+        margin: 18px 0 0;
+        font-size: clamp(1.15rem, 2vw, 1.8rem);
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .hero-copy {
+        margin-top: 18px;
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 22px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        border-color: transparent;
+        color: white;
+        box-shadow: 0 16px 32px rgba(255, 90, 95, 0.28);
+      }
+
+      .button.secondary {
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+      }
+
+      .hero-visual {
+        display: flex;
+        justify-content: center;
+      }
+
+      .portrait {
+        position: relative;
+        width: min(100%, 390px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 8px solid rgba(255,255,255,0.06);
+        background: linear-gradient(135deg, rgba(255, 90, 95, 0.45), rgba(255,255,255,0.04));
+        box-shadow: var(--shadow);
+      }
+
+      .portrait::before {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      section {
+        padding: 40px 0 20px;
+      }
+
+      .section-head {
+        margin-bottom: 28px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2.1rem, 5vw, 4rem);
+        letter-spacing: -0.06em;
+      }
+
+      .about-grid,
+      .project-grid,
+      .skill-grid {
+        display: grid;
+        gap: 22px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 26px;
+        box-shadow: var(--shadow);
+      }
+
+      .about-text p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.02rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 16px;
+      }
+
+      .stat-box {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 22px 18px;
+        text-align: center;
+      }
+
+      .stat-box strong {
+        display: block;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1;
+      }
+
+      .stat-box span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+      }
+
+      .skill-grid {
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+      }
+
+      .skill-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 18px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+      }
+
+      .skill-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(255, 90, 95, 0.2), rgba(255,255,255,0.04));
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: var(--primary);
+      }
+
+      .skill-item h3 {
+        margin: 0 0 4px;
+        font-size: 1.04rem;
+      }
+
+      .skill-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-card {
+        overflow: hidden;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .thumb {
+        height: 190px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, rgba(255,90,95,0.28), rgba(255,255,255,0.04), rgba(18,20,28,0.9));
+      }
+
+      .project-body {
+        padding: 22px 20px 24px;
+      }
+
+      .project-body h3 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+      }
+
+      .project-body p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .project-link {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .contact-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 26px 28px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(255,90,95,0.12), rgba(255,255,255,0.02));
+        border: 1px solid var(--line);
+      }
+
+      .contact-copy p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .socials a {
+        min-width: 46px;
+        min-height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      footer {
+        padding: 30px 0 60px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .about-grid,
+        .project-grid,
+        .skill-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 60px;
+        }
+
+        .contact-box {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav-wrap {
+          flex-direction: column;
+          justify-content: center;
+          padding: 18px 0;
+        }
+
+        .site-nav {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#hero"><span>~/</span>rafael</a>
+        <nav class="site-nav" aria-label="Navigasi utama">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container hero" id="hero">
+        <div>
+          <span class="eyebrow">$ whoami</span>
+          <h1>Halo, Saya <span class="accent">Rafael</span></h1>
+          <p class="hero-role">Web Developer · UI/UX Designer · Content Creator</p>
+          <p class="hero-copy">
+            Saya senang membangun pengalaman digital yang sederhana, cepat, dan nyaman digunakan.
+            Saya fokus pada desain antarmuka, pengembangan web, dan ide-ide kreatif yang bisa
+            berdampak nyata bagi orang lain.
+          </p>
+
+          <div class="cta-row">
+            <a class="button primary" href="#projects">Lihat Project</a>
+            <a class="button secondary" href="#contact">Hubungi Saya</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="portrait">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Portrait Rafael" />
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="about">
+        <div class="section-head">
+          <span class="section-tag">About</span>
+          <h2>Tentang Saya</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="card about-text">
+            <p>
+              Saya adalah seorang developer dan desainer yang tertarik pada pengalaman digital yang
+              bersih, modern, dan mudah dipahami. Saya suka menyatukan logika, desain, dan user
+              experience dalam satu solusi yang terasa natural.
+            </p>
+            <p>
+              Saat ini saya fokus pada pengembangan website, tampilan antarmuka, dan membangun proyek
+              yang tidak hanya indah, tetapi juga berguna untuk kebutuhan nyata.
+            </p>
+          </div>
+
+          <div class="card stats">
+            <div class="stat-box">
+              <strong>2+</strong>
+              <span>Years</span>
+            </div>
+            <div class="stat-box">
+              <strong>15+</strong>
+              <span>Projects</span>
+            </div>
+            <div class="stat-box">
+              <strong>5</strong>
+              <span>Skills</span>
+            </div>
+            <div class="stat-box">
+              <strong>24/7</strong>
+              <span>Learning</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="skills">
+        <div class="section-head">
+          <span class="section-tag">Skills</span>
+          <h2>Keahlian Saya</h2>
+        </div>
+
+        <div class="skill-grid">
+          <div class="skill-item">
+            <div class="skill-icon">H</div>
+            <div>
+              <h3>HTML</h3>
+              <p>Structur Web</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">C</div>
+            <div>
+              <h3>CSS</h3>
+              <p>Styling</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">J</div>
+            <div>
+              <h3>JavaScript</h3>
+              <p>Interaksi</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">U</div>
+            <div>
+              <h3>UI/UX</h3>
+              <p>Design System</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="projects">
+        <div class="section-head">
+          <span class="section-tag">Projects</span>
+          <h2>Proyek Terbaru</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="thumb">Landing Page</div>
+            <div class="project-body">
+              <h3>Landing Page</h3>
+              <p>Membuat landing page modern dengan fokus pada storytelling dan konversi.</p>
+              <a class="project-link" href="#">Lihat project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="thumb">Portfolio</div>
+            <div class="project-body">
+              <h3>Portfolio</h3>
+              <p>Membangun portofolio profesional dengan desain yang bersih dan responsif.</p>
+              <a class="project-link" href="#">Lihat project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="thumb">Dashboard</div>
+            <div class="project-body">
+              <h3>Dashboard</h3>
+              <p>Merancang dashboard sederhana untuk monitoring data dan kebutuhan bisnis.</p>
+              <a class="project-link" href="#">Lihat project</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container" id="contact">
+        <div class="section-head">
+          <span class="section-tag">Contact</span>
+          <h2>Hubungi Saya</h2>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-copy">
+            <p>Saya terbuka untuk kolaborasi, proyek freelance, maupun kesempatan belajar bersama.</p>
+          </div>
+
+          <div class="socials" aria-label="Media sosial">
+            <a href="mailto:rafael@example.com" title="Email">Email</a>
+            <a href="https://instagram.com" title="Instagram" target="_blank" rel="noreferrer">IG</a>
+            <a href="https://github.com" title="GitHub" target="_blank" rel="noreferrer">GH</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Rafael — dibuat dengan hati dan kode.
+    </footer>
+  </body>
+</html>
